@@ -1,0 +1,100 @@
+CREATE TABLE `logs` (
+  `LogId` int NOT NULL AUTO_INCREMENT,
+  `CodReferencia` int DEFAULT NULL,
+  `Processo` varchar(45) DEFAULT NULL,
+  `UsuarioId` int DEFAULT NULL,
+  `Ip` varchar(45) DEFAULT NULL,
+  `DataLog` datetime DEFAULT NULL,
+  `Descricao` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`LogId`)
+)
+
+----------------------------------------
+CREATE TABLE `usuarios` (
+  `UsuarioId` int NOT NULL AUTO_INCREMENT,
+  `Nome` varchar(45) DEFAULT NULL,
+  `Login` varchar(45) DEFAULT NULL,
+  `Password` varchar(45) DEFAULT NULL,
+  `Bloqueado` tinyint DEFAULT NULL,
+  PRIMARY KEY (`UsuarioId`)
+) 
+
+----------------------------------------
+
+CREATE TABLE `veiculos` (
+  `VeiculoId` int NOT NULL AUTO_INCREMENT,
+  `Marca` varchar(45) DEFAULT NULL,
+  `Placa` varchar(45) DEFAULT NULL,
+  `Chassi` varchar(45) DEFAULT NULL,
+  `Renavam` varchar(45) DEFAULT NULL,
+  `CombustivelId` int DEFAULT NULL,
+  `CorId` int DEFAULT NULL,
+  `CondicaoId` int DEFAULT NULL,
+  `StatusId` int DEFAULT NULL,
+  `DataEntrada` datetime DEFAULT NULL,
+  `DataSaida` datetime DEFAULT NULL,
+  `UsuCriacao` varchar(45) DEFAULT NULL,
+  `DataCriacao` datetime DEFAULT NULL,
+  `Obs` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`VeiculoId`)
+) 
+
+----------------------------------------
+
+CREATE TABLE `veiculos_combustivel` (
+  `CombustivelId` int NOT NULL AUTO_INCREMENT,
+  `Nome` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`CombustivelId`)
+)
+
+
+----------------------------------------
+
+CREATE TABLE `veiculos_condicao` (
+  `CondicaoId` int NOT NULL AUTO_INCREMENT,
+  `Nome` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`CondicaoId`)
+)
+
+----------------------------------------
+
+CREATE TABLE `veiculos_cor` (
+  `corId` int NOT NULL AUTO_INCREMENT,
+  `Nome` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`corId`)
+) 
+
+----------------------------------------
+CREATE TABLE `veiculos_fotos` (
+  `FotoId` int NOT NULL AUTO_INCREMENT,
+  `VeiculoId` int DEFAULT NULL,
+  `NumeroFoto` int DEFAULT NULL,
+  `Tipo` varchar(45) DEFAULT NULL,
+  `Extensao` varchar(45) DEFAULT NULL,
+  `UsuCriacao` varchar(45) DEFAULT NULL,
+  `DataCriacao` datetime DEFAULT NULL,
+  `Excluida` tinyint DEFAULT NULL,
+  `UsuExclusao` varchar(45) DEFAULT NULL,
+  `DataExclusao` datetime DEFAULT NULL,
+  PRIMARY KEY (`FotoId`)
+) 
+
+
+----------------------------------------
+
+CREATE TABLE `veiculos_ocorrencia` (
+  `OcorrenciaId` int NOT NULL AUTO_INCREMENT,
+  `VeiculoId` int DEFAULT NULL,
+  `UsuarioId` int DEFAULT NULL,
+  `DataOcorrencia` datetime DEFAULT NULL,
+  `Descricao` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`OcorrenciaId`)
+)
+
+----------------------------------------
+
+CREATE TABLE `veiculos_status` (
+  `StatusId` int NOT NULL AUTO_INCREMENT,
+  `Nome` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`StatusId`)
+) 
